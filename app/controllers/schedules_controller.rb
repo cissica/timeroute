@@ -1,4 +1,5 @@
 class SchedulesController < ApplicationController
+    before_action :redirect_if_not_logged_in
     def new
         @schedule = Schedule.new
     end 
@@ -14,6 +15,11 @@ class SchedulesController < ApplicationController
     end 
 
     def index
-        
+        #show all schcedules that belong to current user
+    end 
+
+    private 
+    def schedule_params
+        params.require(:schedule).permit(:title,:day)
     end 
 end

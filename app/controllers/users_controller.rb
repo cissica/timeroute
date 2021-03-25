@@ -7,8 +7,7 @@ class UsersController < ApplicationController
     def create
         @user = User.new(user_params)
         if @user.save 
-            session[:user_id] = @user.id
-                redirect_to new_schedule_path
+            redirect_to login_path
         else
             render 'users/new.html.erb'
             #render signup form again with error messages 
@@ -16,7 +15,8 @@ class UsersController < ApplicationController
     end 
 
     def show
-        
+        redirect_if_not_logged_in
+        @user = User.find_by(params[:id])
     end 
 
     private 
