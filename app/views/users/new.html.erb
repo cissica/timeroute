@@ -1,5 +1,10 @@
-<%=form_tag("/users") do %>
-<%=label_tag('user[name]', "Name")%>
-<%=text_field_tag('user[name]')%>
-<%=submit_tag "Submit"%>
+<%=form_for(@user) do |f| %>
+<%=f.label :name%>
+<%=f.text_field :name%>
+<br>
+
+<br>
+<%=f.label :password%>
+<%=f.password_field :password%>
+<%=f.submit "Submit"%>
 <% end %>
