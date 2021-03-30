@@ -10,12 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_25_053033) do
+ActiveRecord::Schema.define(version: 2021_03_30_072056) do
 
-  create_table "notes", force: :cascade do |t|
-    t.string "content"
+  create_table "categories", force: :cascade do |t|
+    t.string "category"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "notes", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "task_id"
+    t.string "note_title"
+    t.text "content"
   end
 
   create_table "schedules", force: :cascade do |t|
@@ -23,12 +31,17 @@ ActiveRecord::Schema.define(version: 2021_03_25_053033) do
     t.string "day"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "schedule_type"
+    t.integer "user_id"
   end
 
   create_table "tasks", force: :cascade do |t|
-    t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "schedule_id"
+    t.string "task_title"
+    t.time "when"
+    t.text "description"
   end
 
   create_table "users", force: :cascade do |t|
@@ -37,6 +50,7 @@ ActiveRecord::Schema.define(version: 2021_03_25_053033) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "password_digest"
     t.string "email"
+    t.text "goal"
   end
 
 end

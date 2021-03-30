@@ -14,13 +14,24 @@ class UsersController < ApplicationController
         end 
     end 
 
+    def edit
+        @user = current_user
+    end 
+
+    def update
+        @user = current_user
+        @user.update(user_params)
+        redirect_to user_path(@user)
+    end 
+
     def show
         redirect_if_not_logged_in
-        @user = User.find_by(params[:id])
+        @user = current_user
+        
     end 
 
     private 
     def user_params
-        params.require(:user).permit(:name, :email, :password)
+        params.require(:user).permit(:name, :email, :password, :goal)
     end
 end

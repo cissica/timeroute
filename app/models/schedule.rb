@@ -1,4 +1,6 @@
 class Schedule < ApplicationRecord
-    has_many :users
-    has_many :tasks, through: :users
+    belongs_to :user 
+    belongs_to :category
+    has_many :tasks
+    has_many :notes, through: :tasks
 end
