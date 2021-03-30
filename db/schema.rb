@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_30_072056) do
+ActiveRecord::Schema.define(version: 2021_03_30_222331) do
 
   create_table "categories", force: :cascade do |t|
     t.string "category"
@@ -28,11 +28,15 @@ ActiveRecord::Schema.define(version: 2021_03_30_072056) do
 
   create_table "schedules", force: :cascade do |t|
     t.string "title"
-    t.string "day"
+    t.text "description"
+    t.boolean "daily"
+    t.boolean "weekly"
+    t.integer "user_id"
+    t.integer "category_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "schedule_type"
-    t.integer "user_id"
+    t.index ["category_id"], name: "index_schedules_on_category_id"
+    t.index ["user_id"], name: "index_schedules_on_user_id"
   end
 
   create_table "tasks", force: :cascade do |t|
@@ -53,4 +57,6 @@ ActiveRecord::Schema.define(version: 2021_03_30_072056) do
     t.text "goal"
   end
 
+  add_foreign_key "schedules", "categories"
+  add_foreign_key "schedules", "users"
 end

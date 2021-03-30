@@ -25,7 +25,6 @@ gem 'pry'
 gem 'simple_form'
 gem 'omniauth'
 gem 'dotenv-rails' 
-gem 'dotenv-rails' 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
