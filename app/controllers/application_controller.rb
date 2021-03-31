@@ -31,8 +31,12 @@ class ApplicationController < ActionController::Base
     end 
 
     def current_schedule
-        Schedule.find(params[:schedule_id])
+        Schedule.find(params[:id])
     end 
+
+    def current_task_schedule
+        Schedule.find(params[:schedule_id])
+    end
 
     def current_note
         Note.find(params[:id])

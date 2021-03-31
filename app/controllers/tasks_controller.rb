@@ -1,13 +1,14 @@
 class TasksController < ApplicationController
     def new
-        @schedule = current_schedule
+        @schedule = current_task_schedule
         @task = Task.new
+
     end 
 
     def create
-        @task = current_schedule.tasks.build(task_params)
+        @task = current_task_schedule.tasks.build(task_params)
         if @task.save
-            redirect_to schedule_path(current_schedule)
+            redirect_to schedule_path(current_task_schedule)
         else 
             render 'tasks/new.html.erb'
             #with error messages
@@ -20,7 +21,7 @@ class TasksController < ApplicationController
 
     def update
         current_task.update(task_params)
-        redirect_to schedule_path(current_task.schedule_id)
+        redirect_to edit_schedule_path(current_task.schedule_id)
     end 
 
     def show

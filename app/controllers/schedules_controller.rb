@@ -15,17 +15,16 @@ class SchedulesController < ApplicationController
     end 
 
     def edit
-        @schedule = Schedule.find_by_id(params[:id])
+        @schedule = current_schedule
     end 
 
     def update
-        schedule = Schedule.find(params[:id])
-        schedule.update(schedule_params)
-        redirect_to schedule_path(schedule)
+        current_schedule.update(schedule_params)
+        redirect_to schedule_path(current_schedule)
     end 
 
     def show 
-        @schedule = Schedule.find_by_id(params[:id])
+        @schedule = current_schedule
     end
 
     def index
@@ -33,7 +32,7 @@ class SchedulesController < ApplicationController
     end 
 
     def destroy
-        Schedule.find(params[:id]).destroy
+        current_schedule.destroy
         redirect_to schedules_path
     end 
 
