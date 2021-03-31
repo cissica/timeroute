@@ -2,7 +2,11 @@ class ApplicationController < ActionController::Base
     helper_method :current_user, :logged_in?
 
     def home
-        @user = current_user
+        if logged_in?
+            redirect_to user_path(current_user)
+        else
+        render 'home.html.erb'
+        end 
     end 
     
     private 

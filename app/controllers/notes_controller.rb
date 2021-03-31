@@ -29,9 +29,8 @@ class NotesController < ApplicationController
     end 
 
     def destroy
-        task = Task.find(params[:id])
         @note = Note.find(params[:id]).destroy
-        redirect_to task_path(task)
+        redirect_to schedules_path
     end 
 
     private 
