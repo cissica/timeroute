@@ -11,7 +11,7 @@ class NotesController < ApplicationController
         if @note.save
         redirect_to task_path(current_note_task)
         else 
-        render "notes/new/html.erb"
+        render :template => "notes/new"
         end 
     end 
 

@@ -3,6 +3,10 @@ class User < ApplicationRecord
     has_many :schedules
     has_many :categories, through: :schedules
     has_many :tasks, through: :schedules
+    validates :email, uniqueness: true
+    validates :password, presence: true, length: { minimum: 3, maximum: 20 }
+    validates :name, :email, presence: true
+
 
     def self.create_from_google(auth)
         User.find_or_create_by(email: auth[:info][:email]) do |u|
