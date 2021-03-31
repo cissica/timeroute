@@ -29,6 +29,9 @@ class SchedulesController < ApplicationController
 
     def index
         @schedules = current_user.schedules
+        if params[:category_id]
+        @category = Category.find(params[:category_id])
+        end
     end 
 
     def destroy

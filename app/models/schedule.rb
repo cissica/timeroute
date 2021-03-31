@@ -4,6 +4,7 @@ class Schedule < ApplicationRecord
     has_many :tasks
     has_many :notes, through: :tasks
     validates :title, :description, :category_name, presence: true
+    
     def category_name=(name)
         self.category = Category.find_or_create_by(name: name)
       end

@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   resources :tasks do 
     resources :notes, only: [:new, :create, :index]
   end 
-  resources :categories
+  resources :categories do 
+    resources :schedules, only: [:new, :create, :index]
+  end 
   resources :notes
   resources :users
   
