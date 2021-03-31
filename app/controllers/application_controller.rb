@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
     def home
         if logged_in?
-            redirect_to user_path(current_user)
+        redirect_to user_path(current_user)
         else
         render 'home.html.erb'
         end 
@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
     end 
 
     def redirect_if_not_logged_in
-        redirect_to '/' if !logged_in?
+        redirect_to if !logged_in?
     end
 
     def current_task
