@@ -15,7 +15,12 @@ class SchedulesController < ApplicationController
     end 
 
     def edit
-        @schedule = current_schedule
+        if current_schedule
+            @schedule = current_schedule
+         else
+            flash[:alert] = "That schedule does not exist."
+            redirect_to schedules_path
+         end 
     end 
 
     def update
@@ -33,10 +38,12 @@ class SchedulesController < ApplicationController
     end
 
     def index
-        @schedules = current_user.schedules
-        if params[:category_id]
-        @category = Category.find(params[:category_id])
-        end
+        @categories = Category.all
+        if !params[:category].blank?
+            @schedules = Schedule.in_category(params[:category])
+          else
+            @schedules = Schedule.all
+          end
     end 
 
     def destroy

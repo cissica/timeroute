@@ -1,8 +1,11 @@
 class TasksController < ApplicationController
     def new
-        @schedule = current_task_schedule
-        @task = Task.new
-
+        if params[:schedule_id] && current_task_schedule
+            @task = current_task_schedule.tasks.build
+            else
+                flash[:alert] = "That schedule does not exist."
+                redirect_to schedules_path
+            end
     end 
 
     def create
@@ -16,7 +19,12 @@ class TasksController < ApplicationController
     end 
 
     def edit
-        @task = current_task
+        if current_task
+            @task = current_task
+         else
+            flash[:alert] = "That task does not exist."
+            redirect_to schedules_path
+         end 
     end 
 
     def update
@@ -25,7 +33,12 @@ class TasksController < ApplicationController
     end 
 
     def show
-        @task = current_task
+        if current_task
+            @task = current_task
+         else
+            flash[:alert] = "That task does not exist."
+            redirect_to schedules_path
+         end 
     end 
 
 

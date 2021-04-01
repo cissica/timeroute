@@ -20,11 +20,21 @@ class NotesController < ApplicationController
     end 
 
     def show
-        @note = current_note
+        if current_note
+            @note = current_note
+         else
+            flash[:alert] = "That note does not exist."
+            redirect_to schedules_path
+         end 
     end
 
     def edit
-        @note = current_note
+        if current_note
+            @note = current_note
+         else
+            flash[:alert] = "That note does not exist."
+            redirect_to schedules_path
+         end 
     end
 
     def update

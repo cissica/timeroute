@@ -7,4 +7,9 @@ module ApplicationHelper
           end
         end
       end
+
+      def categories
+        Category.all
+      end 
+    
 end
