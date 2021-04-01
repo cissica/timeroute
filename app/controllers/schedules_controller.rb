@@ -1,7 +1,11 @@
 class SchedulesController < ApplicationController
     before_action :redirect_if_not_logged_in
     def new
-        @schedule = Schedule.new
+        if params[:user_id] && @user = current_user
+        @schedule = current_user.schedules.build
+        else
+            redirect_to '/'
+        end
     end 
 
     def create 
@@ -39,11 +43,15 @@ class SchedulesController < ApplicationController
 
     def index
         @categories = Category.all
-        if !params[:category].blank?
-            @schedules = Schedule.in_category(params[:category])
-          else
-            @schedules = Schedule.all
-          end
+        if current_user
+            if !params[:category].blank?
+                @schedules = current_user.schedules.in_category(params[:category])
+            else
+                @schedules = current_user.schedules
+            end
+        else
+            '/'
+        end
     end 
 
     def destroy

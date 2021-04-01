@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy'
   delete '/logout', to: 'sessions#destroy'
   get '/auth/google_oauth2/callback', to: 'sessions#google'
-  get '/schedules/:category', to: 'schedules#index'
+  resources :users do 
+    resources :schedules
+  end 
   resources :schedules do 
     resources :tasks, only: [:new, :create, :index]
   end 

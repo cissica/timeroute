@@ -13,7 +13,7 @@
   <body>
     <h1><%=link_to "TimeRoute", '/'%></h1>
     <%if logged_in?%>
-    <%=link_to "New Schedule", new_schedule_path%>
+    <%=link_to "New Schedule", new_user_schedule_path(current_user)%>
     <br>
     <%=link_to "My Schedules", schedules_path%>
     <%else%>
