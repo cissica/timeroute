@@ -1,24 +1,10 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Timeroute is about giving the user a place to empty the sometimes overwhelming responsabilities and corresponding endless thought about such responsabilites into one place. Timeroute allows the user to create schedules, tasks for those schedules and notes for tasks. 
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+To use Timeroute simple : 
+1. clone repository
+In your terminal
+2. cd into file
+3. run 'rails s' 
+Once in the homepage, signup and login. 
