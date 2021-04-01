@@ -24,7 +24,12 @@ class SchedulesController < ApplicationController
     end 
 
     def show 
-        @schedule = current_schedule
+         if current_schedule
+            @schedule = current_schedule
+         else
+            flash[:alert] = "That schedule does not exist."
+            redirect_to schedules_path
+         end 
     end
 
     def index

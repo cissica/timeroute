@@ -10,7 +10,6 @@ class UsersController < ApplicationController
             redirect_to login_path
         else
             render 'users/new.html.erb'
-            #render signup form again with error messages 
         end 
     end 
 

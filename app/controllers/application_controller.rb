@@ -27,19 +27,19 @@ class ApplicationController < ActionController::Base
     end 
 
     def current_note_task
-        Task.find_by_id(params[:task_id])
+        @task = Task.find_by_id(params[:task_id])
     end 
 
     def current_schedule
-        Schedule.find(params[:id])
+        Schedule.find_by_id(params[:id])
     end 
 
     def current_task_schedule
-        Schedule.find(params[:schedule_id])
+        Schedule.find_by_id(params[:schedule_id])
     end
 
     def current_note
-        Note.find(params[:id])
+        Note.find_by_id(params[:id])
     end 
 
     def log_out

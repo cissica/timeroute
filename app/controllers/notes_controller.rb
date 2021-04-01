@@ -1,9 +1,13 @@
 class NotesController < ApplicationController
 
+
     def new
-       @task = current_note_task
-       @note = Note.new
-       
+        if params[:task_id] && current_note_task
+        @note = current_note_task.notes.build
+        else
+            flash[:alert] = "That task does not exist."
+            redirect_to schedules_path
+        end
     end
 
     def create
