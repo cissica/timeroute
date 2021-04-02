@@ -1,6 +1,6 @@
 # README
 
-Timeroute is about giving the user a place to empty the sometimes overwhelming responsabilities and corresponding endless thought about such responsabilites into one place. Timeroute allows the user to create schedules, tasks for those schedules and notes for tasks. 
+Timeroute is about giving the user a place to empty the sometimes overwhelming responsabilities and corresponding endless thoughts about such responsabilites into one place. Timeroute allows the user to create schedules, tasks for those schedules and notes for tasks. 
 
 To use Timeroute simple : 
 1. clone repository

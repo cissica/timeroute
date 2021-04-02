@@ -45,7 +45,7 @@ class SchedulesController < ApplicationController
         @categories = Category.all
         if current_user
             if !params[:category].blank?
-                @schedules = current_user.schedules.in_category(params[:category])
+                 @schedules = current_user.schedules.in_category(params[:category])
             else
                 @schedules = current_user.schedules
             end

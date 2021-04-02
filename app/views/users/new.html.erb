@@ -1,17 +1,20 @@
 <h1>Signup Page</h1>
 <%=form_for(@user) do |f| %>
 <br>
-<%=show_errors(@user, :name)%>
+<p class="error">
+<%=show_errors(@user, :name)%></p>
 <%=f.label :name%>
 <%=f.text_field :name%>
 <br>
     <br>
-<%=show_errors(@user, :email)%>
+<p class="error">
+<%=show_errors(@user, :email)%></p>
 <%=f.label :email%>
 <%=f.email_field :email%>
 <br>
     <br>
-<%=show_errors(@user, :password)%>
+<p class="error">
+<%=show_errors(@user, :password)%></p>
 <%=f.label :password%>
 <%=f.password_field :password%>
 <br>
